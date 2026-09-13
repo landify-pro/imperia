@@ -93,7 +93,7 @@ h2{font-family:var(--serif);font-size:clamp(46px,4.5vw,66px);font-weight:400;lin
   .brand__mark{width:34px}
   .menu-button{width:40px;height:40px}
   .mobile-menu{top:64px;left:14px;right:14px}
-  .hero{min-height:auto;padding-bottom:0}
+  .hero{display:block;min-height:auto;padding-bottom:0}
   .hero__media,.hero__veil{inset:0}
   .hero__media img{object-position:center 44%}
   .hero__veil{background:linear-gradient(180deg,rgba(1,10,11,.16) 0%,rgba(1,10,11,.06) 30%,rgba(1,10,11,.38) 58%,rgba(1,10,11,.9) 82%,#07191a 100%)}
