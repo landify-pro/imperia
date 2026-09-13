@@ -33,6 +33,8 @@ const menuButton = document.querySelector('.menu-button');
 const mobileMenu = document.querySelector('.mobile-menu');
 const bookingModal = document.querySelector('#booking-modal');
 const houseModal = document.querySelector('#house-modal');
+const atmosphereVideo = document.querySelector('#atmosphere-video');
+const videoPlay = document.querySelector('.video-play');
 
 const setHeader = () => header.classList.toggle('scrolled', scrollY > 24);
 setHeader();
@@ -68,6 +70,35 @@ const openBooking = () => {
 document.querySelectorAll('.js-booking-open').forEach(button => button.addEventListener('click', openBooking));
 document.querySelector('#booking-form').addEventListener('submit', event => { event.preventDefault(); openBooking(); });
 
+if (atmosphereVideo && videoPlay) {
+  videoPlay.addEventListener('click', async () => {
+    if (videoPlay.disabled) return;
+    videoPlay.disabled = true;
+    videoPlay.classList.add('loading');
+    const label = videoPlay.querySelector('span:last-child');
+    const initialLabel = label.textContent;
+    label.textContent = 'Загружаем фильм';
+    try {
+      if (!atmosphereVideo.src) {
+        const count = Number(atmosphereVideo.dataset.parts);
+        const base = atmosphereVideo.dataset.partBase;
+        const responses = await Promise.all(Array.from({ length: count }, (_, index) => fetch(`${base}${String(index).padStart(2, '0')}`)));
+        if (responses.some(response => !response.ok)) throw new Error('Video chunk loading failed');
+        const chunks = await Promise.all(responses.map(response => response.arrayBuffer()));
+        atmosphereVideo.src = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
+      }
+      atmosphereVideo.controls = true;
+      await atmosphereVideo.play();
+      videoPlay.hidden = true;
+    } catch {
+      atmosphereVideo.controls = false;
+      videoPlay.disabled = false;
+      videoPlay.classList.remove('loading');
+      label.textContent = initialLabel;
+    }
+  });
+}
+
 document.querySelectorAll('.house-card').forEach(card => {
   const show = () => {
     const data = houses[card.dataset.house];
@@ -98,7 +129,7 @@ checkin.addEventListener('change', () => { checkout.min = addDays(new Date(check
 
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-}), { threshold: .12 });
+}), { threshold: .04 });
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 
 window.addEventListener('error', event => console.warn('Resource error:', event.target?.src || event.message), true);
