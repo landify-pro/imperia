@@ -83,7 +83,7 @@ if (atmosphereVideo && videoPlay) {
         const count = Number(atmosphereVideo.dataset.parts);
         const base = atmosphereVideo.dataset.partBase;
         const responses = await Promise.all(Array.from({ length: count }, (_, index) => fetch(`${base}${String(index).padStart(2, '0')}`)));
-        if (responses.some(response => !response.ok)) throw new Error('Video chunk loading failed');
+        if (responses.some(response => !response.ok)) throw new Error('Video loading failed');
         const chunks = await Promise.all(responses.map(response => response.arrayBuffer()));
         atmosphereVideo.src = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
       }

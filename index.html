@@ -8,8 +8,8 @@
   <title>Империя туризма — отдых на берегу Катуни</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -76,7 +76,7 @@
           <div><p class="eyebrow">Видео</p><h2 id="video-title">Почувствуйте<br>атмосферу</h2><p>Один фильм скажет больше,<br>чем тысяча слов.</p></div>
         </div>
         <div class="video-frame reveal">
-          <video id="atmosphere-video" poster="assets/images/video-poster.webp" preload="none" playsinline data-part-base="assets/video/imperia-film.part" data-parts="8">
+          <video id="atmosphere-video" poster="assets/images/video-poster.webp" preload="none" playsinline data-part-base="assets/video/chunks/imperia-film.part" data-parts="5">
             Ваш браузер не поддерживает воспроизведение видео.
           </video>
           <button class="video-play" type="button" aria-label="Смотреть фильм об Империи туризма">
@@ -182,6 +182,17 @@
         </div>
       </div>
     </section>
+
+    <section class="reviews" aria-labelledby="reviews-title">
+      <div class="shell">
+        <div class="reviews__head reveal"><div><p class="eyebrow">Гости о нас</p><h2 id="reviews-title">Место, куда<br>возвращаются</h2></div><span>4,8 · Яндекс Карты</span></div>
+        <div class="reviews__grid">
+          <blockquote class="review reveal"><p>«Это то место, куда хочется возвращаться. Невероятная природа, стильные дома, забота в каждой детали».</p><footer>Анна · Москва</footer></blockquote>
+          <blockquote class="review reveal"><p>«Идеальный баланс комфорта и дикой природы. Вечер у Катуни — настоящее волшебство».</p><footer>Максим · Новосибирск</footer></blockquote>
+          <blockquote class="review reveal"><p>«Провели здесь несколько дней всей семьёй. Красиво, спокойно и всё рядом».</p><footer>Екатерина · Санкт-Петербург</footer></blockquote>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer" id="contacts">
@@ -207,6 +218,6 @@
     <div class="house-modal__grid"><img alt=""><div><p class="eyebrow">Категория дома</p><h2></h2><p class="house-modal__lead"></p><ul></ul><button class="button button--light js-booking-open" type="button">Проверить даты <span>→</span></button></div></div>
   </dialog>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
