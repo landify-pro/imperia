@@ -36,9 +36,14 @@ const houseModal = document.querySelector('#house-modal');
 const atmosphereVideo = document.querySelector('#atmosphere-video');
 const videoPlay = document.querySelector('.video-play');
 
-const setHeader = () => header.classList.toggle('scrolled', scrollY > 24);
-setHeader();
-addEventListener('scroll', setHeader, { passive: true });
+const hero = document.querySelector('.hero');
+const updatePageChrome = () => {
+  header.classList.toggle('scrolled', scrollY > 24);
+  document.body.classList.toggle('show-mobile-booking', scrollY > Math.min(hero.offsetHeight * .72, 700));
+};
+updatePageChrome();
+addEventListener('scroll', updatePageChrome, { passive: true });
+addEventListener('resize', updatePageChrome, { passive: true });
 
 menuButton.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') === 'true';
@@ -76,7 +81,6 @@ if (atmosphereVideo && videoPlay) {
     videoPlay.disabled = true;
     videoPlay.classList.add('loading');
     const label = videoPlay.querySelector('span:last-child');
-    const initialLabel = label.textContent;
     label.textContent = 'Загружаем фильм';
     try {
       if (!atmosphereVideo.src) {
@@ -89,12 +93,13 @@ if (atmosphereVideo && videoPlay) {
       }
       atmosphereVideo.controls = true;
       await atmosphereVideo.play();
+      atmosphereVideo.closest('.video-frame').classList.add('is-playing');
       videoPlay.hidden = true;
     } catch {
       atmosphereVideo.controls = false;
       videoPlay.disabled = false;
       videoPlay.classList.remove('loading');
-      label.textContent = initialLabel;
+      label.textContent = 'Повторить загрузку';
     }
   });
 }
@@ -120,12 +125,29 @@ document.querySelectorAll('.modal__close').forEach(button => button.addEventList
 }));
 
 const today = new Date();
-const addDays = (date, days) => { const next = new Date(date); next.setDate(next.getDate() + days); return next.toISOString().slice(0, 10); };
+const formatLocalDate = date => [
+  date.getFullYear(),
+  String(date.getMonth() + 1).padStart(2, '0'),
+  String(date.getDate()).padStart(2, '0')
+].join('-');
+const addDays = (date, days) => {
+  const next = new Date(date);
+  next.setDate(next.getDate() + days);
+  return formatLocalDate(next);
+};
+const parseLocalDate = value => {
+  const [year, month, day] = value.split('-').map(Number);
+  return new Date(year, month - 1, day);
+};
 const checkin = document.querySelector('input[name="checkin"]');
 const checkout = document.querySelector('input[name="checkout"]');
 checkin.min = addDays(today, 0); checkout.min = addDays(today, 1);
 checkin.value = addDays(today, 7); checkout.value = addDays(today, 10);
-checkin.addEventListener('change', () => { checkout.min = addDays(new Date(checkin.value), 1); if (checkout.value <= checkin.value) checkout.value = checkout.min; });
+checkin.addEventListener('change', () => {
+  if (!checkin.value) return;
+  checkout.min = addDays(parseLocalDate(checkin.value), 1);
+  if (checkout.value <= checkin.value) checkout.value = checkout.min;
+});
 
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }

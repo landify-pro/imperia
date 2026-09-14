@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
@@ -6,10 +6,9 @@
   <meta name="theme-color" content="#071717">
   <meta name="description" content="Империя туризма — туристический комплекс в сосновом лесу на берегу Катуни, в 500 метрах от озера Ая.">
   <title>Империя туризма — отдых на берегу Катуни</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="preload" href="assets/fonts/prata-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -27,12 +26,12 @@
         <a href="#location">Как добраться</a>
         <a href="#contacts">Контакты</a>
       </nav>
-      <a class="header__phone" href="tel:+79039120022">+7 (903) 912-00-22</a>
+      <a class="header__phone" href="tel:+79039120022">+7&nbsp;(903)&nbsp;912&#8209;00&#8209;22</a>
       <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
     </div>
     <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация">
       <a href="#houses">Дома</a><a href="#territory">Территория</a><a href="#experiences">Отдых</a><a href="#location">Как добраться</a><a href="#contacts">Контакты</a>
-      <a href="tel:+79039120022">+7 (903) 912-00-22</a>
+      <a href="tel:+79039120022">+7&nbsp;(903)&nbsp;912&#8209;00&#8209;22</a>
     </nav>
   </header>
 
@@ -94,7 +93,7 @@
           <div class="section-heading__main"><span class="section-number">03</span><div><p class="eyebrow">Проживание</p><h2 id="houses-title">Дома в гармонии<br>с природой</h2></div></div>
           <p>Реальные категории размещения на территории комплекса — от камерных зеркальных модулей до большого кедрового дома.</p>
         </div>
-        <div class="house-track" aria-label="Категории домов">
+        <div class="house-track">
           <article class="house-card reveal" tabindex="0" data-house="zum">
             <img src="assets/images/house-zum.webp?v=2" alt="Зеркальные умные модули ЗУМ" loading="lazy">
             <div class="house-card__shade"></div><div class="house-card__content"><p>01 · ЗУМ</p><h3>Зеркальный умный модуль</h3><span>25 м² · студия · King size</span><button type="button" aria-label="Подробнее о категории ЗУМ">→</button></div>
@@ -198,7 +197,7 @@
   <footer class="footer" id="contacts">
     <div class="shell footer__grid">
       <div><a class="brand brand--footer" href="#hero"><svg class="brand__mark" viewBox="0 0 78 28" aria-hidden="true"><path d="M2 24 18 8l9 9L39 3l15 16 8-9 14 14M11 24l16-16 12 13 9-9 12 12"/></svg><span>Империя туризма</span></a><p>Отдых на берегу Катуни,<br>к которому хочется возвращаться.</p></div>
-      <div><span>Связаться с нами</span><a class="footer__phone" href="tel:+79039120022">+7 (903) 912-00-22</a><a href="mailto:imperia.tr@mail.ru">imperia.tr@mail.ru</a></div>
+      <div><span>Связаться с нами</span><a class="footer__phone" href="tel:+79039120022">+7&nbsp;(903)&nbsp;912&#8209;00&#8209;22</a><a href="mailto:imperia.tr@mail.ru">imperia.tr@mail.ru</a></div>
       <div><span>Навигация</span><a href="#houses">Дома</a><a href="#territory">Территория</a><a href="#experiences">Отдых</a><a href="#location">Как добраться</a></div>
       <div class="footer__cta"><button class="button button--light js-booking-open" type="button">Забронировать дом <span>→</span></button></div>
     </div>
@@ -215,9 +214,9 @@
 
   <dialog class="modal house-modal" id="house-modal">
     <button class="modal__close" type="button" aria-label="Закрыть">×</button>
-    <div class="house-modal__grid"><img alt=""><div><p class="eyebrow">Категория дома</p><h2></h2><p class="house-modal__lead"></p><ul></ul><button class="button button--light js-booking-open" type="button">Проверить даты <span>→</span></button></div></div>
+    <div class="house-modal__grid"><img src="assets/images/house-zum.webp" alt="Зеркальный умный модуль ЗУМ"><div><p class="eyebrow">Категория дома</p><h2>ЗУМ</h2><p class="house-modal__lead"></p><ul></ul><button class="button button--light js-booking-open" type="button">Проверить даты <span>→</span></button></div></div>
   </dialog>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
