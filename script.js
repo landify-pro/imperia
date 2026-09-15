@@ -1,5 +1,3 @@
-const bookingUrl = 'https://imperia-turcom.bookonline24.ru/';
-
 const houses = {
   zum: {
     title: 'ЗУМ', image: 'assets/images/house-zum.webp', alt: 'Зеркальные умные модули ЗУМ',
@@ -113,11 +111,6 @@ const closeDialog = dialog => {
   if (dialog.open) dialog.close();
   if (!houseModal.open) document.body.classList.remove('modal-open');
 };
-
-document.querySelector('#booking-form').addEventListener('submit', event => {
-  event.preventDefault();
-  window.location.assign(bookingUrl);
-});
 
 if (atmosphereVideo && videoPlay) {
   videoPlay.addEventListener('click', async () => {

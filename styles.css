@@ -294,7 +294,7 @@ body.show-mobile-booking .mobile-booking{opacity:1;pointer-events:auto;transform
 
 /* Corrections v7 — stable video, cleaner type and full accommodation catalogue */
 h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:balance}
-.hero__veil{background:radial-gradient(ellipse 54% 55% at 25% 32%,rgba(1,12,13,.84) 0%,rgba(1,12,13,.58) 44%,rgba(1,12,13,.08) 78%,transparent 100%),linear-gradient(90deg,rgba(2,12,13,.52),transparent 58%,rgba(2,12,13,.18)),linear-gradient(180deg,rgba(2,10,11,.24),transparent 42%,rgba(2,12,13,.58))}
+.hero__veil{background:radial-gradient(ellipse 56% 58% at 24% 32%,rgba(1,12,13,.93) 0%,rgba(1,12,13,.72) 46%,rgba(1,12,13,.14) 80%,transparent 100%),linear-gradient(90deg,rgba(2,12,13,.58),transparent 60%,rgba(2,12,13,.2)),linear-gradient(180deg,rgba(2,10,11,.26),transparent 42%,rgba(2,12,13,.6))}
 .hero__copy>p{max-width:18ch;text-wrap:balance}
 .video-section>.shell{grid-template-columns:minmax(280px,320px) minmax(0,1fr);gap:52px;align-items:center}
 .section-intro--video{display:block}
@@ -322,9 +322,9 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:balance}
 }
 
 @media(max-width:760px){
-  .hero__media img{object-position:center 58%}
+  .hero__media img{object-position:center 61%}
   .hero__veil{background:radial-gradient(ellipse 100% 43% at 38% 22%,rgba(1,10,11,.7),rgba(1,10,11,.12) 72%,transparent),linear-gradient(180deg,rgba(1,9,10,.3) 0%,rgba(1,9,10,.04) 34%,rgba(1,9,10,.28) 58%,rgba(1,9,10,.92) 88%,#07191a 100%)}
-  .hero__copy>p{max-width:15ch;line-height:1.16}
+  .hero__copy>p{max-width:22ch;line-height:1.16}
   .section-intro--video{display:block;margin-bottom:22px}
   .section-intro--video h2{font-size:32px;line-height:1.14}
   .video-quality{top:8px;right:8px;padding:5px 7px}
@@ -333,5 +333,4 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:balance}
   .territory__copy h2{max-width:11ch;font-size:32px;line-height:1.14}
   .territory__map{aspect-ratio:auto;margin-inline:-16px}
   .territory__map img{width:100%;height:auto}
-  .footer__cta{display:none!important}
 }

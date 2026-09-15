@@ -8,7 +8,7 @@
   <title>Империя туризма — отдых на берегу Катуни</title>
   <link rel="preload" href="assets/fonts/prata-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-400.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -58,14 +58,14 @@
         </div>
       </div>
 
-      <form class="booking-bar shell" id="booking-form">
+      <div class="booking-bar shell" id="booking-form" aria-label="Быстрое бронирование">
         <label><span>Заезд</span><input type="date" name="checkin" required></label>
         <label><span>Выезд</span><input type="date" name="checkout" required></label>
         <label><span>Гости</span><select name="guests" aria-label="Количество гостей"><option>2 гостя</option><option>1 гость</option><option>3 гостя</option><option>4 гостя</option><option>5+ гостей</option></select></label>
         <label><span>Промокод</span><input type="text" name="promo" placeholder="Введите код"></label>
-        <button class="button button--light" type="submit">Найти номер <span>→</span></button>
+        <a class="button button--light" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Найти номер <span>→</span></a>
         <small>Официальная<br>система бронирования</small>
-      </form>
+      </div>
     </section>
 
     <section class="video-section numbered" id="video" aria-labelledby="video-title">
@@ -75,7 +75,7 @@
           <div><p class="eyebrow">Видео</p><h2 id="video-title">Почувствуйте атмосферу</h2><p>Одно видео расскажет об «Империи туризма» больше, чем тысяча слов.</p></div>
         </div>
         <div class="video-frame reveal">
-          <video id="atmosphere-video" src="assets/video/imperia-film.mp4" poster="assets/images/video-poster.webp" preload="metadata" playsinline controls controlslist="nodownload" data-src-hd="assets/video/imperia-film.mp4" data-src-sd="assets/video/imperia-film-web.mp4">
+          <video id="atmosphere-video" src="assets/video/imperia-film.mp4?v=8" poster="assets/images/video-poster.webp?v=8" preload="metadata" playsinline controls controlslist="nodownload" data-src-hd="assets/video/imperia-film.mp4?v=8" data-src-sd="assets/video/imperia-film-web.mp4?v=8">
             Ваш браузер не поддерживает воспроизведение видео.
           </video>
           <button class="video-play" type="button" aria-label="Смотреть видео об Империи туризма">
@@ -249,6 +249,6 @@
     <div class="house-modal__grid"><img src="assets/images/house-zum.webp" alt="Зеркальный умный модуль ЗУМ"><div><p class="eyebrow">Категория размещения</p><h2>ЗУМ</h2><p class="house-modal__lead"></p><ul></ul><a class="button button--light" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Проверить даты <span>→</span></a></div></div>
   </dialog>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
