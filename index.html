@@ -8,7 +8,7 @@
   <title>Империя туризма — отдых на берегу Катуни</title>
   <link rel="preload" href="assets/fonts/prata-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-400.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -20,7 +20,7 @@
         <span>Империя туризма</span>
       </a>
       <nav class="nav" aria-label="Основная навигация">
-        <a href="#houses">Дома</a>
+        <a href="#houses">Номера</a>
         <a href="#territory">Территория</a>
         <a href="#experiences">Отдых</a>
         <a href="#location">Как добраться</a>
@@ -30,7 +30,7 @@
       <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
     </div>
     <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация">
-      <a href="#houses">Дома</a><a href="#territory">Территория</a><a href="#experiences">Отдых</a><a href="#location">Как добраться</a><a href="#contacts">Контакты</a>
+      <a href="#houses">Номера</a><a href="#territory">Территория</a><a href="#experiences">Отдых</a><a href="#location">Как добраться</a><a href="#contacts">Контакты</a>
       <a href="tel:+79039120022">+7&nbsp;(903)&nbsp;912&#8209;00&#8209;22</a>
     </nav>
   </header>
@@ -50,9 +50,9 @@
         </div>
         <div class="hero__bottom">
           <div class="hero__copy">
-            <p>Вечер, который<br>не хочется заканчивать</p>
-            <button class="button button--light js-booking-open" type="button">Выбрать дом <span>→</span></button>
-            <span class="availability"><i></i> Есть свободные дома</span>
+            <p>Отдых в горах Алтая начинается здесь</p>
+            <a class="button button--light" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Выбрать номер <span>→</span></a>
+            <span class="availability"><i></i> Есть свободные номера</span>
           </div>
           <p class="hero__scroll">Прокрутите вниз <span>↓</span></p>
         </div>
@@ -63,7 +63,7 @@
         <label><span>Выезд</span><input type="date" name="checkout" required></label>
         <label><span>Гости</span><select name="guests" aria-label="Количество гостей"><option>2 гостя</option><option>1 гость</option><option>3 гостя</option><option>4 гостя</option><option>5+ гостей</option></select></label>
         <label><span>Промокод</span><input type="text" name="promo" placeholder="Введите код"></label>
-        <button class="button button--light" type="submit">Найти дом <span>→</span></button>
+        <button class="button button--light" type="submit">Найти номер <span>→</span></button>
         <small>Официальная<br>система бронирования</small>
       </form>
     </section>
@@ -72,16 +72,22 @@
       <div class="shell">
         <div class="section-intro section-intro--video reveal">
           <span class="section-number">02</span>
-          <div><p class="eyebrow">Видео</p><h2 id="video-title">Почувствуйте<br>атмосферу</h2><p>Один фильм скажет больше,<br>чем тысяча слов.</p></div>
+          <div><p class="eyebrow">Видео</p><h2 id="video-title">Почувствуйте атмосферу</h2><p>Одно видео расскажет об «Империи туризма» больше, чем тысяча слов.</p></div>
         </div>
         <div class="video-frame reveal">
-          <video id="atmosphere-video" poster="assets/images/video-poster.webp" preload="none" playsinline data-part-base="assets/video/chunks/imperia-film.part" data-parts="5">
+          <video id="atmosphere-video" src="assets/video/imperia-film.mp4" poster="assets/images/video-poster.webp" preload="metadata" playsinline controls controlslist="nodownload" data-src-hd="assets/video/imperia-film.mp4" data-src-sd="assets/video/imperia-film-web.mp4">
             Ваш браузер не поддерживает воспроизведение видео.
           </video>
-          <button class="video-play" type="button" aria-label="Смотреть фильм об Империи туризма">
+          <button class="video-play" type="button" aria-label="Смотреть видео об Империи туризма">
             <span class="video-play__icon" aria-hidden="true">▶</span>
-            <span>Смотреть фильм</span>
+            <span>Смотреть видео</span>
           </button>
+          <label class="video-quality">Качество
+            <select id="video-quality" aria-label="Качество видео">
+              <option value="hd">HD 720p</option>
+              <option value="sd">480p</option>
+            </select>
+          </label>
           <span class="video-duration">01:00</span>
         </div>
       </div>
@@ -90,10 +96,10 @@
     <section class="houses numbered" id="houses" aria-labelledby="houses-title">
       <div class="shell">
         <div class="section-heading reveal">
-          <div class="section-heading__main"><span class="section-number">03</span><div><p class="eyebrow">Проживание</p><h2 id="houses-title">Дома в гармонии<br>с природой</h2></div></div>
-          <p>Реальные категории размещения на территории комплекса — от камерных зеркальных модулей до большого кедрового дома.</p>
+          <div class="section-heading__main"><span class="section-number">03</span><div><p class="eyebrow">Проживание</p><h2 id="houses-title">Номера среди природы</h2></div></div>
+          <p>Все категории размещения — от зеркальных модулей на берегу Катуни до классических номеров и просторных коттеджей.</p>
         </div>
-        <div class="house-track">
+        <div class="house-track" aria-label="Категории номеров и коттеджей">
           <article class="house-card reveal" tabindex="0" data-house="zum">
             <img src="assets/images/house-zum.webp?v=2" alt="Зеркальные умные модули ЗУМ" loading="lazy">
             <div class="house-card__shade"></div><div class="house-card__content"><p>01 · ЗУМ</p><h3>Зеркальный умный модуль</h3><span>25 м² · студия · King size</span><button type="button" aria-label="Подробнее о категории ЗУМ">→</button></div>
@@ -112,10 +118,46 @@
           </article>
           <article class="house-card reveal" tabindex="0" data-house="eco">
             <img src="assets/images/house-eco.webp" alt="Двухэтажный кедровый коттедж ЭКО" loading="lazy">
-            <div class="house-card__shade"></div><div class="house-card__content"><p>05 · ЭКО</p><h3>Кедровый дом</h3><span>200 м² · 4 спальни · камин</span><button type="button" aria-label="Подробнее о категории ЭКО">→</button></div>
+            <div class="house-card__shade"></div><div class="house-card__content"><p>05 · ЭКО</p><h3>Кедровый коттедж</h3><span>200 м² · 4 спальни · камин</span><button type="button" aria-label="Подробнее о категории ЭКО">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="kb">
+            <img src="assets/images/room-kb.webp" alt="Благоустроенный номер категории КБ" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>06 · КБ</p><h3>Корпус благоустроенный</h3><span>16 м² · до 3 гостей · общая кухня</span><button type="button" aria-label="Подробнее о категории КБ">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="tk">
+            <img src="assets/images/room-tk.webp" alt="Обновлённый номер категории ТК" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>07 · ТК</p><h3>Тёплый комфорт</h3><span>2 гостя · тёплый пол · санузел</span><button type="button" aria-label="Подробнее о категории ТК">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="bb">
+            <img src="assets/images/room-bb.webp" alt="Номер категории ББ на береговой линии" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>08 · ББ</p><h3>Береговой благоустроенный</h3><span>до 3 гостей · терраса · санузел</span><button type="button" aria-label="Подробнее о категории ББ">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="dp">
+            <img src="assets/images/room-dp.webp" alt="Двухэтажный номер Дуплекс" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>09 · ДП</p><h3>Дуплекс</h3><span>2 этажа · до 4 гостей · веранда</span><button type="button" aria-label="Подробнее о категории ДП">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="b">
+            <img src="assets/images/room-b.webp" alt="Благоустроенный номер категории Б" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>10 · Б</p><h3>Благоустроенный</h3><span>до 3 гостей · отдельный вход · санузел</span><button type="button" aria-label="Подробнее о категории Б">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="bplus">
+            <img src="assets/images/room-b_plus.webp" alt="Благоустроенный номер категории Б плюс" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>11 · Б+</p><h3>Благоустроенный плюс</h3><span>до 3 гостей · отдельный вход · санузел</span><button type="button" aria-label="Подробнее о категории Б плюс">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="m">
+            <img src="assets/images/room-m.webp" alt="Мансардный номер категории М" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>12 · М</p><h3>Мансарда</h3><span>2 гостя · отдельный вход</span><button type="button" aria-label="Подробнее о категории М">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="ld">
+            <img src="assets/images/room-ld.webp" alt="Летний номер категории ЛД" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>13 · ЛД</p><h3>Летний номер</h3><span>2 гостя · беседка · костровая зона</span><button type="button" aria-label="Подробнее о категории ЛД">→</button></div>
+          </article>
+          <article class="house-card reveal" tabindex="0" data-house="k">
+            <img src="assets/images/room-tr.webp" alt="Номера К1 и К2 в коттедже Треугольный" loading="lazy">
+            <div class="house-card__shade"></div><div class="house-card__content"><p>14 · К</p><h3>Треугольный</h3><span>К1 и К2 · кухня · санузел</span><button type="button" aria-label="Подробнее о категории К">→</button></div>
           </article>
         </div>
-        <div class="track-hint"><span></span><p>Листайте, чтобы увидеть все дома</p></div>
+        <div class="track-hint"><span></span><p>Листайте, чтобы увидеть все номера</p></div>
       </div>
     </section>
 
@@ -123,18 +165,14 @@
       <div class="shell territory__grid">
         <div class="territory__copy reveal">
           <span class="section-number">04</span><p class="eyebrow">Территория</p>
-          <h2 id="territory-title">Пространство<br>для особенных<br>моментов</h2>
-          <p>Всё, что нужно для идеального отдыха — на одной территории. Лес, река, спорт, ресторан и проживание.</p>
-          <span class="map-note">Временная схема · обновим по фотографии территории</span>
+          <h2 id="territory-title">Карта территории</h2>
+          <p>Номера, бассейн, ресторан, падел-корт и выход к Катуни — всё на одной схеме.</p>
+          <span class="map-note">Нажмите на карту, чтобы открыть её крупнее</span>
         </div>
-        <div class="territory__map reveal">
-          <img src="assets/images/territory.jpg" alt="Территория Империи туризма с высоты" loading="lazy">
-          <span class="hotspot hotspot--1"><i>1</i> Домики</span>
-          <span class="hotspot hotspot--2"><i>2</i> Бассейн</span>
-          <span class="hotspot hotspot--3"><i>3</i> Падел</span>
-          <span class="hotspot hotspot--4"><i>4</i> Ресторан</span>
-          <span class="hotspot hotspot--5"><i>5</i> Берег Катуни</span>
-        </div>
+        <a class="territory__map reveal" href="assets/images/territory-map-premium.webp" target="_blank" rel="noopener" aria-label="Открыть карту территории крупнее">
+          <img src="assets/images/territory-map-premium.webp" alt="Карта территории Империи туризма" loading="lazy">
+          <span class="map-expand">Открыть крупнее ↗</span>
+        </a>
       </div>
     </section>
 
@@ -164,7 +202,7 @@
     <section class="offer numbered" aria-labelledby="offer-title">
       <div class="shell offer__inner reveal">
         <div><span class="section-number">06</span><p class="eyebrow">Спецпредложение</p><h2 id="offer-title">Особенный день<br>на Алтае</h2><p>Скидка 10% в день рождения, а также в течение трёх дней до и после него. Промокод — <strong>МОЙДЕНЬ</strong>.</p></div>
-        <button class="button button--light js-booking-open" type="button">Забронировать <span>→</span></button>
+        <a class="button button--light" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Забронировать <span>→</span></a>
       </div>
     </section>
 
@@ -186,7 +224,7 @@
       <div class="shell">
         <div class="reviews__head reveal"><div><p class="eyebrow">Гости о нас</p><h2 id="reviews-title">Место, куда<br>возвращаются</h2></div><span>4,8 · Яндекс Карты</span></div>
         <div class="reviews__grid">
-          <blockquote class="review reveal"><p>«Это то место, куда хочется возвращаться. Невероятная природа, стильные дома, забота в каждой детали».</p><footer>Анна · Москва</footer></blockquote>
+          <blockquote class="review reveal"><p>«Это то место, куда хочется возвращаться. Невероятная природа, стильные номера, забота в каждой детали».</p><footer>Анна · Москва</footer></blockquote>
           <blockquote class="review reveal"><p>«Идеальный баланс комфорта и дикой природы. Вечер у Катуни — настоящее волшебство».</p><footer>Максим · Новосибирск</footer></blockquote>
           <blockquote class="review reveal"><p>«Провели здесь несколько дней всей семьёй. Красиво, спокойно и всё рядом».</p><footer>Екатерина · Санкт-Петербург</footer></blockquote>
         </div>
@@ -198,25 +236,19 @@
     <div class="shell footer__grid">
       <div><a class="brand brand--footer" href="#hero"><svg class="brand__mark" viewBox="0 0 78 28" aria-hidden="true"><path d="M2 24 18 8l9 9L39 3l15 16 8-9 14 14M11 24l16-16 12 13 9-9 12 12"/></svg><span>Империя туризма</span></a><p>Отдых на берегу Катуни,<br>к которому хочется возвращаться.</p></div>
       <div><span>Связаться с нами</span><a class="footer__phone" href="tel:+79039120022">+7&nbsp;(903)&nbsp;912&#8209;00&#8209;22</a><a href="mailto:imperia.tr@mail.ru">imperia.tr@mail.ru</a></div>
-      <div><span>Навигация</span><a href="#houses">Дома</a><a href="#territory">Территория</a><a href="#experiences">Отдых</a><a href="#location">Как добраться</a></div>
-      <div class="footer__cta"><button class="button button--light js-booking-open" type="button">Забронировать дом <span>→</span></button></div>
+      <div><span>Навигация</span><a href="#houses">Номера</a><a href="#territory">Территория</a><a href="#experiences">Отдых</a><a href="#location">Как добраться</a></div>
+      <div class="footer__cta"><a class="button button--light" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Забронировать номер <span>→</span></a></div>
     </div>
     <div class="shell footer__bottom"><p>© 2026 Империя туризма</p><p>ООО Туристическая фирма «Синегорье»</p></div>
   </footer>
 
-  <button class="mobile-booking js-booking-open" type="button">Забронировать <span>→</span></button>
-
-  <dialog class="modal booking-modal" id="booking-modal">
-    <div class="modal__head"><div><p class="eyebrow">Официальное бронирование</p><h2>Выберите даты и дом</h2></div><button class="modal__close" type="button" aria-label="Закрыть">×</button></div>
-    <div class="booking-iframe-wrap"><iframe data-src="https://imperia-turcom.bookonline24.ru/" title="Система бронирования Империи туризма"></iframe></div>
-    <p class="modal__fallback">Если форма не загрузилась, <a href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">откройте бронирование в новой вкладке →</a></p>
-  </dialog>
+  <a class="mobile-booking" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Забронировать <span>→</span></a>
 
   <dialog class="modal house-modal" id="house-modal">
     <button class="modal__close" type="button" aria-label="Закрыть">×</button>
-    <div class="house-modal__grid"><img src="assets/images/house-zum.webp" alt="Зеркальный умный модуль ЗУМ"><div><p class="eyebrow">Категория дома</p><h2>ЗУМ</h2><p class="house-modal__lead"></p><ul></ul><button class="button button--light js-booking-open" type="button">Проверить даты <span>→</span></button></div></div>
+    <div class="house-modal__grid"><img src="assets/images/house-zum.webp" alt="Зеркальный умный модуль ЗУМ"><div><p class="eyebrow">Категория размещения</p><h2>ЗУМ</h2><p class="house-modal__lead"></p><ul></ul><a class="button button--light" href="https://imperia-turcom.bookonline24.ru/" target="_blank" rel="noopener">Проверить даты <span>→</span></a></div></div>
   </dialog>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

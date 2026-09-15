@@ -291,3 +291,47 @@ body.show-mobile-booking .mobile-booking{opacity:1;pointer-events:auto;transform
   .territory__map,.video-frame{margin-inline:-14px}
   .location h2{font-size:37px}
 }
+
+/* Corrections v7 — stable video, cleaner type and full accommodation catalogue */
+h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:balance}
+.hero__veil{background:radial-gradient(ellipse 54% 55% at 25% 32%,rgba(1,12,13,.84) 0%,rgba(1,12,13,.58) 44%,rgba(1,12,13,.08) 78%,transparent 100%),linear-gradient(90deg,rgba(2,12,13,.52),transparent 58%,rgba(2,12,13,.18)),linear-gradient(180deg,rgba(2,10,11,.24),transparent 42%,rgba(2,12,13,.58))}
+.hero__copy>p{max-width:18ch;text-wrap:balance}
+.video-section>.shell{grid-template-columns:minmax(280px,320px) minmax(0,1fr);gap:52px;align-items:center}
+.section-intro--video{display:block}
+.section-intro--video .section-number{margin-bottom:32px}
+.section-intro--video h2{font-size:clamp(38px,3.4vw,48px);line-height:1.1}
+.section-intro--video>div>p:last-child{max-width:30ch}
+.video-frame video{object-fit:contain}
+.video-play{z-index:3}
+.video-quality{position:absolute;z-index:4;top:12px;right:12px;display:flex;align-items:center;gap:8px;padding:7px 9px;background:rgba(3,16,17,.76);backdrop-filter:blur(8px);color:rgba(255,255,255,.76);font-size:7px;text-transform:uppercase;letter-spacing:.12em}
+.video-quality select{border:0;background:transparent;color:#fff;outline:0;font-size:9px;font-weight:600;color-scheme:dark}
+.video-duration{bottom:42px}
+.house-track{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:250px;gap:10px}
+.territory__grid{grid-template-columns:minmax(250px,285px) minmax(0,1fr);gap:48px}
+.territory__copy h2{max-width:10ch;line-height:1.08}
+.territory__map{position:relative;display:block;aspect-ratio:auto;overflow:hidden;border:1px solid var(--line);background:#05191a;text-decoration:none}
+.territory__map:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 76%,rgba(2,12,13,.42));pointer-events:none}
+.territory__map img{width:100%;height:auto;object-fit:contain;object-position:center;filter:none;transition:transform .55s ease}
+.territory__map:hover img{transform:scale(1.012)}
+.map-expand{position:absolute;z-index:2;right:14px;bottom:12px;padding:8px 10px;background:rgba(3,17,18,.74);backdrop-filter:blur(8px);font-size:7px;text-transform:uppercase;letter-spacing:.13em}
+.mobile-booking{text-decoration:none}
+
+@media(max-width:900px){
+  .video-section>.shell{display:block}
+  .section-intro--video .section-number{margin-bottom:22px}
+}
+
+@media(max-width:760px){
+  .hero__media img{object-position:center 58%}
+  .hero__veil{background:radial-gradient(ellipse 100% 43% at 38% 22%,rgba(1,10,11,.7),rgba(1,10,11,.12) 72%,transparent),linear-gradient(180deg,rgba(1,9,10,.3) 0%,rgba(1,9,10,.04) 34%,rgba(1,9,10,.28) 58%,rgba(1,9,10,.92) 88%,#07191a 100%)}
+  .hero__copy>p{max-width:15ch;line-height:1.16}
+  .section-intro--video{display:block;margin-bottom:22px}
+  .section-intro--video h2{font-size:32px;line-height:1.14}
+  .video-quality{top:8px;right:8px;padding:5px 7px}
+  .video-duration{bottom:38px}
+  .house-track{grid-template-columns:none;grid-auto-columns:78vw}
+  .territory__copy h2{max-width:11ch;font-size:32px;line-height:1.14}
+  .territory__map{aspect-ratio:auto;margin-inline:-16px}
+  .territory__map img{width:100%;height:auto}
+  .footer__cta{display:none!important}
+}

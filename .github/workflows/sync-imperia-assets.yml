@@ -1,0 +1,51 @@
+name: Sync Imperia media assets
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  sync-assets:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download official room photos
+        run: |
+          set -euo pipefail
+          mkdir -p assets/images assets/video
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/kb.webp -o assets/images/room-kb.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/tk.webp -o assets/images/room-tk.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/bb.webp -o assets/images/room-bb.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/dp.webp -o assets/images/room-dp.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/b.webp -o assets/images/room-b.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/b_plus.webp -o assets/images/room-b_plus.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/m.webp -o assets/images/room-m.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/ld.webp -o assets/images/room-ld.webp
+          curl -L --fail --retry 3 https://imperia-tur.com/images/nums/tr.webp -o assets/images/room-tr.webp
+
+      - name: Download and prepare clean HD video
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet --upgrade yt-dlp
+          yt-dlp --no-playlist -f "bv*[height<=720]+ba/b[height<=720]" --merge-output-format mp4 -o "/tmp/imperia-source.%(ext)s" "https://rutube.ru/video/d20359ff9282291539522db7a17d3ea5/"
+          ffmpeg -y -i /tmp/imperia-source.mp4 -c:v libx264 -preset medium -crf 19 -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart assets/video/imperia-film.mp4
+          ffmpeg -y -i /tmp/imperia-source.mp4 -vf "scale=-2:480" -c:v libx264 -preset medium -crf 22 -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart assets/video/imperia-film-web.mp4
+          ffmpeg -y -ss 00:00:02 -i assets/video/imperia-film.mp4 -frames:v 1 -vf "scale=1280:-2" -quality 88 assets/images/video-poster.webp
+          rm -rf assets/video/chunks
+
+      - name: Commit generated assets
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/sync-imperia-assets.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add HD video and official room media"
+          git push

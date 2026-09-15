@@ -25,21 +25,69 @@ const houses = {
     title: 'ЭКО', image: 'assets/images/house-eco.webp', alt: 'Двухэтажный кедровый коттедж ЭКО',
     lead: 'Двухэтажный коттедж из кедра площадью 200 м² для большой семьи или компании.',
     facts: ['Четыре спальни на втором этаже', 'Кухня-гостиная 60 м² с камином', 'Две ванные комнаты и стиральная машина', 'Терраса, мангальная и костровая зоны']
+  },
+  kb: {
+    title: 'КБ', image: 'assets/images/room-kb.webp', alt: 'Благоустроенный номер категории КБ',
+    lead: 'Благоустроенный номер площадью 16 м² в тёплом двухэтажном корпусе с общей кухней на этаже.',
+    facts: ['До трёх гостей', 'Двуспальная или две односпальные кровати', 'Собственный санузел и душевая кабина', 'Общая оборудованная кухня на шесть номеров']
+  },
+  tk: {
+    title: 'ТК', image: 'assets/images/room-tk.webp', alt: 'Обновлённый номер категории ТК',
+    lead: 'Однокомнатный двухместный номер с обновлённым современным интерьером на второй или третьей береговой линии.',
+    facts: ['Две трансформируемые односпальные кровати', 'Тёплый пол по всей площади номера', 'Мини-холодильник, чайник и фен', 'Собственная ванная комната']
+  },
+  bb: {
+    title: 'ББ', image: 'assets/images/room-bb.webp', alt: 'Номер категории ББ на береговой линии',
+    lead: 'Благоустроенный номер с отдельным входом на первой или второй береговой линии.',
+    facts: ['Двуспальная кровать и дополнительный диван', 'Холодильник и чайник', 'Собственный санузел и душ', 'Терраса с мебелью и мангалом']
+  },
+  dp: {
+    title: 'ДП', image: 'assets/images/room-dp.webp', alt: 'Двухэтажный номер Дуплекс',
+    lead: 'Двухэтажный благоустроенный номер «Дуплекс» с панорамными окнами, верандой и балконом.',
+    facts: ['До четырёх гостей', 'Гостиная и спальня на разных этажах', 'Холодильник, микроволновая печь и ТВ', 'Собственный санузел и мангальная зона']
+  },
+  b: {
+    title: 'Б', image: 'assets/images/room-b.webp', alt: 'Благоустроенный номер категории Б',
+    lead: 'Благоустроенный номер с отдельным входом в коттедже на два номера.',
+    facts: ['До трёх гостей', 'Две односпальные кровати', 'Мягкий уголок и место для хранения', 'Собственный санузел и душ']
+  },
+  bplus: {
+    title: 'Б+', image: 'assets/images/room-b_plus.webp', alt: 'Благоустроенный номер категории Б плюс',
+    lead: 'Благоустроенный номер с отдельным входом на первом этаже коттеджа.',
+    facts: ['До трёх гостей', 'Двуспальная или две односпальные кровати', 'Мягкий уголок и место для хранения', 'Собственный санузел и душ']
+  },
+  m: {
+    title: 'М', image: 'assets/images/room-m.webp', alt: 'Мансардный номер категории М',
+    lead: 'Камерный мансардный номер с отдельным входом на втором этаже коттеджа.',
+    facts: ['Размещение для двух гостей', 'Двуспальная или две односпальные кровати', 'Стол, стулья и зеркало', 'Душевые и санузлы находятся на территории']
+  },
+  ld: {
+    title: 'ЛД', image: 'assets/images/room-ld.webp', alt: 'Летний номер категории ЛД',
+    lead: 'Летний номер с отдельным входом, беседкой и собственной костровой зоной рядом.',
+    facts: ['Размещение для двух гостей', 'Двуспальная или две односпальные кровати', 'Витражное окно и место для хранения', 'Душевые и санузлы находятся на территории']
+  },
+  k: {
+    title: 'К', image: 'assets/images/room-tr.webp', alt: 'Номера К1 и К2 в коттедже Треугольный',
+    lead: 'Номера К1 и К2 в коттедже «Треугольный» с собственной гостиной и кухонной зоной.',
+    facts: ['К1 — 38 м², две комнаты и гостиная', 'К2 — 25 м², комната и гостиная', 'Кухонная зона с холодильником', 'Собственный санузел и душ']
   }
 };
 
 const header = document.querySelector('.header');
 const menuButton = document.querySelector('.menu-button');
 const mobileMenu = document.querySelector('.mobile-menu');
-const bookingModal = document.querySelector('#booking-modal');
 const houseModal = document.querySelector('#house-modal');
 const atmosphereVideo = document.querySelector('#atmosphere-video');
 const videoPlay = document.querySelector('.video-play');
+const videoQuality = document.querySelector('#video-quality');
 
 const hero = document.querySelector('.hero');
+const footer = document.querySelector('.footer');
 const updatePageChrome = () => {
   header.classList.toggle('scrolled', scrollY > 24);
-  document.body.classList.toggle('show-mobile-booking', scrollY > Math.min(hero.offsetHeight * .72, 700));
+  const pastHero = scrollY > Math.min(hero.offsetHeight * .72, 700);
+  const beforeFooter = scrollY + innerHeight < footer.offsetTop + 40;
+  document.body.classList.toggle('show-mobile-booking', pastHero && beforeFooter);
 };
 updatePageChrome();
 addEventListener('scroll', updatePageChrome, { passive: true });
@@ -63,44 +111,41 @@ const openDialog = dialog => {
 };
 const closeDialog = dialog => {
   if (dialog.open) dialog.close();
-  if (![bookingModal, houseModal].some(item => item.open)) document.body.classList.remove('modal-open');
+  if (!houseModal.open) document.body.classList.remove('modal-open');
 };
 
-const openBooking = () => {
-  closeDialog(houseModal);
-  const iframe = bookingModal.querySelector('iframe');
-  if (!iframe.src) iframe.src = iframe.dataset.src;
-  openDialog(bookingModal);
-};
-document.querySelectorAll('.js-booking-open').forEach(button => button.addEventListener('click', openBooking));
-document.querySelector('#booking-form').addEventListener('submit', event => { event.preventDefault(); openBooking(); });
+document.querySelector('#booking-form').addEventListener('submit', event => {
+  event.preventDefault();
+  window.location.assign(bookingUrl);
+});
 
 if (atmosphereVideo && videoPlay) {
   videoPlay.addEventListener('click', async () => {
-    if (videoPlay.disabled) return;
-    videoPlay.disabled = true;
-    videoPlay.classList.add('loading');
-    const label = videoPlay.querySelector('span:last-child');
-    label.textContent = 'Загружаем фильм';
     try {
-      if (!atmosphereVideo.src) {
-        const count = Number(atmosphereVideo.dataset.parts);
-        const base = atmosphereVideo.dataset.partBase;
-        const responses = await Promise.all(Array.from({ length: count }, (_, index) => fetch(`${base}${String(index).padStart(2, '0')}`)));
-        if (responses.some(response => !response.ok)) throw new Error('Video loading failed');
-        const chunks = await Promise.all(responses.map(response => response.arrayBuffer()));
-        atmosphereVideo.src = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
-      }
-      atmosphereVideo.controls = true;
       await atmosphereVideo.play();
       atmosphereVideo.closest('.video-frame').classList.add('is-playing');
       videoPlay.hidden = true;
     } catch {
-      atmosphereVideo.controls = false;
-      videoPlay.disabled = false;
-      videoPlay.classList.remove('loading');
-      label.textContent = 'Повторить загрузку';
+      videoPlay.querySelector('span:last-child').textContent = 'Нажмите ещё раз';
     }
+  });
+  atmosphereVideo.addEventListener('play', () => {
+    atmosphereVideo.closest('.video-frame').classList.add('is-playing');
+    videoPlay.hidden = true;
+  });
+}
+
+if (atmosphereVideo && videoQuality) {
+  videoQuality.addEventListener('change', () => {
+    const nextSource = videoQuality.value === 'sd' ? atmosphereVideo.dataset.srcSd : atmosphereVideo.dataset.srcHd;
+    const wasPaused = atmosphereVideo.paused;
+    const currentTime = atmosphereVideo.currentTime;
+    atmosphereVideo.src = nextSource;
+    atmosphereVideo.load();
+    atmosphereVideo.addEventListener('loadedmetadata', () => {
+      atmosphereVideo.currentTime = Math.min(currentTime, atmosphereVideo.duration || currentTime);
+      if (!wasPaused) atmosphereVideo.play().catch(() => {});
+    }, { once: true });
   });
 }
 
@@ -119,7 +164,7 @@ document.querySelectorAll('.house-card').forEach(card => {
 });
 
 document.querySelectorAll('.modal__close').forEach(button => button.addEventListener('click', () => closeDialog(button.closest('dialog'))));
-[bookingModal, houseModal].forEach(dialog => dialog.addEventListener('click', event => {
+[houseModal].forEach(dialog => dialog.addEventListener('click', event => {
   const box = dialog.getBoundingClientRect();
   if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) closeDialog(dialog);
 }));
